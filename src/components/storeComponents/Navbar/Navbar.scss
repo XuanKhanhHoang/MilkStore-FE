@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+header {
+  #subNavMobile {
+    .nav-link {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 0.5rem;
+      border-bottom: 1px solid #ccc;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .nav-link:active {
+      color: #2b4f24;
+    }
+  }
+  #accountInfoContainer:hover #btnLogout {
+    display: block !important;
+  }
+  nav {
+    .nav-link {
+      display: block;
+      color: #959494;
+      padding: 4px;
+      border: 1px solid #dad6d6;
+      border-bottom: 0;
+      border-top: 0;
+      border-radius: 2px;
+      margin: 0 4px;
+      text-transform: uppercase;
+      text-align: center;
+      text-wrap: nowrap;
+      width: fit-content;
+    }
+    .nav-link:hover {
+      text-decoration: underline;
+      background-color: darkgray;
+    }
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0);
+  }
+
+  25% {
+    transform: translate(0, -2px);
+  }
+
+  50% {
+    transform: translate(0, 2px);
+  }
+
+  75% {
+    transform: translate(0, -2px);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-100px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
