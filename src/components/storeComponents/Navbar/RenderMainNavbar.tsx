@@ -9,6 +9,9 @@ import { signOut, useSession } from "next-auth/react";
 
 import React, { useEffect } from "react";
 import { adminRole } from "@/app/storemanage/login/roles.enum";
+import { AppDispatch, AppUseSelector } from "@/redux/store";
+import { useDispatch } from "react-redux";
+import { refreshCart } from "@/redux/feature/cart";
 
 export default function RenderMainNavbar({
   data,
@@ -21,6 +24,7 @@ export default function RenderMainNavbar({
   if (usSession.data?.user?.value.ROLE == adminRole) {
     session = null;
   }
+  const dispatch = useDispatch<AppDispatch>();
   const handleSearch = () => {
     let key: string | undefined = (
       document.getElementById("searchInp") as HTMLInputElement
@@ -58,8 +62,11 @@ export default function RenderMainNavbar({
       signOut();
     }
   };
+  const cartAmount =
+    AppUseSelector((state) => state.CartReducer.value.amount) || 0;
   useEffect(() => {
     checkValidAccToken();
+    dispatch(refreshCart());
   }, []);
   return (
     <header className=" sticky mb-4 shadow-sm  bg-[#3d71e7] ">
@@ -120,11 +127,11 @@ export default function RenderMainNavbar({
               </span>
             </Link>
           )}
-          <Link className="text-center  " href={""}>
+          <Link className="text-center  " href={"/cart"}>
             <div className="relative inline-block me-2">
               <i className="fa-solid fa-cart-shopping p-2 cursor-pointer"></i>
               <span className="bg-orange-500 px-1 absolute rounded font-bold bottom-0 right-0 text-xs">
-                0
+                {cartAmount}
               </span>
             </div>
 

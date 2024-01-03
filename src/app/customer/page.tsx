@@ -90,12 +90,12 @@ export default async function page() {
                       </div>
                       <div className="px-4 py-2">{data.PHONE_NUMBER}</div>
                     </div>
-                    <div className="grid grid-cols-2">
+                    <div className="flex">
                       <div className="px-4 py-2 font-semibold">Địa chỉ</div>
                       <div className="px-4 py-2">{data.ADDRESS}</div>
                     </div>
 
-                    <div className="grid grid-cols-2">
+                    <div className="flex">
                       <div className="px-4 py-2 font-semibold">Email.</div>
                       <div className="px-4 py-2">
                         <a

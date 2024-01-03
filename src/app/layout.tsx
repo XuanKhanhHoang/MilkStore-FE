@@ -27,29 +27,29 @@ export default function RootLayout({
     <html lang="en">
       <body className={" min-h-screen"} style={{ backgroundColor: "white" }}>
         <NextAuthProvider>
-          {/* <ReduxProvider> */}
-          {!isAdminPage && <Navbar />}
-          {children}
-          {!isAdminPage && (
-            <footer>
-              <hr className="my-8" />
-              <p className="text-center mb-3 text-sm">
-                Công ty thành lập và hoạt động theo Giấy chứng nhận đăng ký
-                doanh nghiệp số{" "}
-                <a href="https://www.google.com" className="text-blue-400">
-                  0300588**** do Sở KHĐT Tp ** cấp ngày 20/11/***
-                </a>
-              </p>
-              <p className="text-center text-base">
-                Copyright 2023 Copyright by{" "}
-                <a href="https://www.google.com" className="text-blue-400">
-                  KTH Store
-                </a>
-                . All Rights Reserved. Powered by Khanhpopo.
-              </p>
-            </footer>
-          )}
-          {/* </ReduxProvider> */}
+          <ReduxProvider>
+            {!isAdminPage && <Navbar />}
+            {children}
+            {!isAdminPage && (
+              <footer>
+                <hr className="my-8" />
+                <p className="text-center mb-3 text-sm">
+                  Công ty thành lập và hoạt động theo Giấy chứng nhận đăng ký
+                  doanh nghiệp số{" "}
+                  <a href="https://www.google.com" className="text-blue-400">
+                    0300588**** do Sở KHĐT Tp ** cấp ngày 20/11/***
+                  </a>
+                </p>
+                <p className="text-center text-base">
+                  Copyright 2023 Copyright by{" "}
+                  <a href="https://www.google.com" className="text-blue-400">
+                    KTH Store
+                  </a>
+                  . All Rights Reserved. Powered by Khanhpopo.
+                </p>
+              </footer>
+            )}
+          </ReduxProvider>
         </NextAuthProvider>
       </body>
     </html>

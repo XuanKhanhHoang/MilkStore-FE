@@ -1,6 +1,8 @@
 "use client";
 
+import { addProductToCart, cartItem } from "@/redux/feature/cart";
 import { memo, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 function ProductVariationPrice({
   variation,
@@ -15,13 +17,23 @@ function ProductVariationPrice({
   ];
 }) {
   const [amount, setAmount] = useState("1");
-  let priceUnit = variation;
-  const [variationState, setVariationState] = useState(priceUnit[0]);
+  const [variationState, setVariationState] = useState(variation[0]);
+  const dispatch = useDispatch();
+  const handleAddToCart = () => {
+    dispatch(
+      addProductToCart({
+        vid: variationState.VARIATION_ID,
+        amount: Number(amount),
+      })
+    );
+  };
   const [totalPrice, setTotalPrice] = useState(variationState.PRICE);
   useEffect(() => {
-    document
-      .getElementById("horizontal-list-radio-license0")
-      ?.setAttribute("checked", "checked");
+    (
+      document.getElementById(
+        "horizontal-list-radio-license0"
+      ) as HTMLInputElement
+    ).checked = true;
   }, []);
   const decrement = (e: any) => {
     let value = Number(amount);
@@ -60,7 +72,7 @@ function ProductVariationPrice({
               <div
                 className="flex items-center ps-1 border rounded mx-1 md:my-0 my-2 "
                 onClick={() => {
-                  setVariationState((pre) => item);
+                  setVariationState((pre: any) => item);
                   setTotalPrice((pre) => item.PRICE * Number(amount));
                 }}
               >
@@ -69,6 +81,7 @@ function ProductVariationPrice({
                   type="radio"
                   value={item.VARIATION_ID}
                   name="list-radio"
+                  defaultChecked={index == 0}
                   className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-900"
                   style={{ boxShadow: "none" }}
                 />
@@ -117,6 +130,7 @@ function ProductVariationPrice({
         <button
           type="button"
           className="w-6/12 md:w-4/12 p-2  font-medium text-sm text-white bg-orange-400 me-1 rounded-md"
+          onClick={handleAddToCart}
         >
           Them vao gio hang
         </button>
